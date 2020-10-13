@@ -5,7 +5,7 @@ import { StyleSheet, Text, View } from "react-native";
 import {mockData} from "./mockData.tsx";
 import { Icon } from 'react-native-elements'
 import InfoPanel from './components/InfoPanel.js'
-
+import MapButton from './components/MapButton.js';
 
 
 export default function App() {
@@ -60,7 +60,43 @@ setSelectedParkingSpot(parkingSpot);
       data={selectedParkingSpot}
       onClose={handleChange}/>
       ) : null}
+      <div
+                style={{
+                  position: 'absolute',
+                  zIndex: 5,
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  display: 'flex',
+                  justifyContent: 'space-evenly',
+                  backgroundColor: '#faf6e0',
+                  boxShadow: '0 2px 15px 0 rgba(69,36,28,0.40)',
+                }}
+              >
+                <MapButton
 
+                >
+                <Icon
+                type='font-awesome-5'
+                name='map'
+                />
+                  <span>Map</span>
+                </MapButton>
+                <div
+                  style={{
+                    alignSelf: 'stretch',
+                    width: 1,
+                    borderRight: 'solid 1px #45241c21',
+                  }}
+                ></div>
+                <MapButton >
+                <Icon
+                type='font-awesome-5'
+                name='user'
+                />
+                  <span>Profile</span>
+                </MapButton>
+              </div>
   </ReactMapGL>
     </View>
   )
