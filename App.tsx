@@ -30,19 +30,41 @@ const [selectedParkingSpot, setSelectedParkingSpot] = useState(null);
       key={parkingSpot.id}
       latitude={parkingSpot.latitude}
       longitude={parkingSpot.longitude}
-
-
-
->
+      >
 <Icon
 type='font-awesome-5'
 name='parking'
 color='#517fa4'
+onClick={e => {
+e.preventDefault();
+setSelectedParkingSpot(parkingSpot);
+console.log("Clicked!")
+}}
 />
 
 
-      </Marker>
+
+    </Marker>
+
     ))}
+
+
+    {selectedParkingSpot ? (
+      <div style={{
+                  position: 'absolute',
+                  top: 5,
+                  bottom: 5,
+                  left: 10,
+                  right: 10,
+                  minHeight: 50,
+                  textAlign: "center",
+                  backgroundColor: '#f3edcd',
+                  zIndex: 1,
+                }}>
+            <h2>{selectedParkingSpot.title}</h2>
+            </div>
+) : null}
+
   </ReactMapGL>
     </View>
   )
