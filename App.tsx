@@ -4,6 +4,7 @@ import ReactMapGL, { Marker } from "react-map-gl";
 import { StyleSheet, Text, View } from "react-native";
 import {mockData} from "./mockData.tsx";
 import { Icon } from 'react-native-elements'
+import InfoPanel from './components/InfoPanel.js'
 
 export default function App() {
 
@@ -38,7 +39,6 @@ color='#517fa4'
 onClick={e => {
 e.preventDefault();
 setSelectedParkingSpot(parkingSpot);
-console.log("Clicked!")
 }}
 />
 
@@ -50,20 +50,10 @@ console.log("Clicked!")
 
 
     {selectedParkingSpot ? (
-      <div style={{
-                  position: 'absolute',
-                  top: 5,
-                  bottom: 5,
-                  left: 10,
-                  right: 10,
-                  minHeight: 50,
-                  textAlign: "center",
-                  backgroundColor: '#f3edcd',
-                  zIndex: 1,
-                }}>
-            <h2>{selectedParkingSpot.title}</h2>
-            </div>
-) : null}
+      <InfoPanel
+      data={selectedParkingSpot}
+      onClose={console.log("resr")}/>
+      ) : null}
 
   </ReactMapGL>
     </View>

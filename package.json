@@ -15,7 +15,11 @@
     "react-map-gl": "^5.2.9",
     "react-native": "https://github.com/expo/react-native/archive/sdk-39.0.3.tar.gz",
     "react-native-elements": "^2.3.2",
-    "react-native-web": "~0.13.12"
+    "react-native-web": "~0.13.12",
+    "react-spring": "^8.0.27",
+    "react-use": "^15.3.4",
+    "react-use-gesture": "^7.0.16",
+    "styled-components": "^5.2.0"
   },
   "devDependencies": {
     "react-native-web": "~0.13.7",
