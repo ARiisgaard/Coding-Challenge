@@ -6,8 +6,9 @@ import {mockData} from "./mockData.tsx";
 import { Icon } from 'react-native-elements'
 import InfoPanel from './components/InfoPanel.js'
 
-export default function App() {
 
+
+export default function App() {
   const [viewport, setViewport] = useState({
   latitude: 55.66034382268525,
   longitude: 12.610791490293405,
@@ -17,6 +18,11 @@ export default function App() {
 });
 // This state is used for keeping track of which parking spot have been clicked
 const [selectedParkingSpot, setSelectedParkingSpot] = useState(null);
+
+
+function handleChange() {
+  setSelectedParkingSpot(null);
+}
   return (
     <View style={styles.container}>
     <ReactMapGL {...viewport}
@@ -52,13 +58,15 @@ setSelectedParkingSpot(parkingSpot);
     {selectedParkingSpot ? (
       <InfoPanel
       data={selectedParkingSpot}
-      onClose={console.log("resr")}/>
+      onClose={handleChange}/>
       ) : null}
 
   </ReactMapGL>
     </View>
   )
 }
+
+
 
 const styles = StyleSheet.create({
   container: {

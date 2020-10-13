@@ -41,7 +41,7 @@ export default function InfoPanel(props) {
   };
 
   return (
-    <Modal show={true} onClose={() => onClose('MenuExit')}>
+    <Modal show={true} onClose={() => onClose(null)}>
       <h1 style={{ marginTop: 0, marginBottom: 30 }}>
       {data.title}</h1>
       <animated.div
