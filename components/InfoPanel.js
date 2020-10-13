@@ -5,6 +5,8 @@ import { useDrag } from 'react-use-gesture';
 import Modal from './common/Modal.js';
 import styled from 'styled-components';
 import { Icon } from 'react-native-elements'
+import Button from './common/Button';
+
 
 const V_THRESHOLD = 0.3;
 export default function InfoPanel(props) {
@@ -40,6 +42,11 @@ export default function InfoPanel(props) {
     alignItems: "center"
   };
 
+  const buttonOneAnimation = useSpring({
+    marginLeft: displayedPanel === 1 ? '0vw' : '-100vw',
+  });
+  const AnimatedButton = animated(Button)
+
   return (
     <Modal show={true} onClose={() => onClose(null)}>
       <h1 style={{ marginTop: 0, marginBottom: 30 }}>
@@ -61,6 +68,18 @@ export default function InfoPanel(props) {
           }}
         >
         <img src={data.imageUrl} alt="ParkingImage" width="80%"/>
+        <AnimatedButton
+        style={{
+          ...buttonOneAnimation,
+          ...{ position: 'absolute', left: '50%', top: '80%',
+                    transform: 'translate(-50%, -50%)'} }
+        }
+        title="Read more"
+        onClick={() => setDisplayedPanel(2)}
+        disabled={displayedPanel !== 1}
+/>
+
+
         </span>
         <span
           style={{
