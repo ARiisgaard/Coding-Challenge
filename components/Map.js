@@ -29,7 +29,10 @@ function closeModal() {
   mapboxApiAccessToken="pk.eyJ1IjoiYXJpaXNnYWFyZCIsImEiOiJjam80NnNydW4xMWRiM2xtb2t4ZzZ6Y3Z0In0.zl26mr2ggKw3ywWTcvmsnA"
   mapStyle="mapbox://styles/ariisgaard/ckg2esi040nhv1apgiqlqlmor"
       onViewportChange={viewport => {
-        setViewport(viewport);
+        //Allows the user to change the view if the infopanel is closed
+        if (selectedParkingSpot === null) {
+          setViewport(viewport);
+        }
       }}
   >
   {/* Adding markers to the map from the data */}
