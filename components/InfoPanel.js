@@ -8,6 +8,7 @@ import { Icon } from 'react-native-elements'
 import Button from './common/Button';
 
 
+  // Infopanel displaying the data
 const V_THRESHOLD = 0.3;
 export default function InfoPanel(props) {
   const { onClose, data } = props;
@@ -25,6 +26,7 @@ export default function InfoPanel(props) {
       }
     }
   });
+  //Animations for content and button swiping, dots displaying current page
   const firstPartAnimation = useSpring({
     marginLeft: displayedPanel === 1 ? '0vw' : '-100vw',
   });
@@ -41,8 +43,7 @@ export default function InfoPanel(props) {
     backgroundColor: '#45241C',
     alignItems: "center"
   };
-
-  const buttonOneAnimation = useSpring({
+  const buttonSwipeAnimation = useSpring({
     marginLeft: displayedPanel === 1 ? '0vw' : '-100vw',
   });
   const AnimatedButton = animated(Button)
@@ -51,6 +52,8 @@ export default function InfoPanel(props) {
     <Modal show={true} onClose={() => onClose(null)}>
       <h1 style={{ marginTop: 0, marginBottom: 30 }}>
       {data.title}</h1>
+
+      {/* Swipable content */}
       <animated.div
         {...bind()}
         style={{
@@ -68,9 +71,11 @@ export default function InfoPanel(props) {
           }}
         >
         <img src={data.imageUrl} alt="ParkingImage" width="80%"/>
+
+        {/* Adding button as alternative to swipe*/}
         <AnimatedButton
         style={{
-          ...buttonOneAnimation,
+          ...buttonSwipeAnimation,
           ...{ position: 'absolute', left: '50%', top: '80%',
                     transform: 'translate(-50%, -50%)'} }
         }
@@ -89,6 +94,7 @@ export default function InfoPanel(props) {
           {data.description}
         </span>
       </animated.div>
+      {/* Adding animated dots */}
       <div
         style={{
           marginTop: 20,

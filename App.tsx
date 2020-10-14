@@ -8,8 +8,8 @@ import { Icon } from 'react-native-elements'
 import MapButton from './components/MapButton.js';
 import ProfileScreen from "./components/ProfileScreen"
 
+// Here the different screens for the app get added
 const Stack = createStackNavigator();
-
 const App = () => {
   return (
     <NavigationContainer>
@@ -24,7 +24,7 @@ const App = () => {
   );
 };
 
-
+//Adding the map and buttons to navigate to profile
 const HomeScreen = ({ navigation }) => {
   return (
     <div>

@@ -7,7 +7,7 @@ import { Icon } from 'react-native-elements'
 import InfoPanel from './InfoPanel.js'
 import MapButton from './MapButton.js';
 
-
+//Defining the map view, which get shown on load
 export default function Map() {
   const [viewport, setViewport] = useState({
   latitude: 55.66034382268525,
@@ -19,8 +19,8 @@ export default function Map() {
 // This state is used for keeping track of which parking spot have been clicked
 const [selectedParkingSpot, setSelectedParkingSpot] = useState(null);
 
-
-function handleChange() {
+// Function for closing the info panel
+function closeModal() {
   setSelectedParkingSpot(null);
 }
   return (
@@ -32,6 +32,7 @@ function handleChange() {
         setViewport(viewport);
       }}
   >
+  {/* Adding markers to the map from the data */}
   {mockData.map((parkingSpot) => (
       <Marker
       key={parkingSpot.id}
@@ -43,7 +44,7 @@ type='font-awesome-5'
 name='parking'
 color='#517fa4'
 onClick={e => {
-e.preventDefault();
+  /* When clicking a marker this marker is defined as currently selected */
 setSelectedParkingSpot(parkingSpot);
 }}
 />
@@ -54,11 +55,11 @@ setSelectedParkingSpot(parkingSpot);
 
     ))}
 
-
+{/* If a marker is selected, then the infopanel is displayed with it's information */}
     {selectedParkingSpot ? (
       <InfoPanel
       data={selectedParkingSpot}
-      onClose={handleChange}/>
+      onClose={closeModal}/>
       ) : null}
 
   </ReactMapGL>
